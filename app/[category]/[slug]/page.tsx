@@ -12,7 +12,7 @@ import { renderMdx } from "@/lib/mdx";
 import type { CategorySlug } from "@/lib/types";
 
 interface PageProps {
-  params: { category: string; slug: string };
+  params: Promise<{ category: string; slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -23,8 +23,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  if (!isCategorySlug(params.category)) return { title: "Not found" };
-  const post = await getPostBySlug(params.category, params.slug);
+  const { category, slug } = await params;
+  if (!isCategorySlug(category)) return { title: "Not found" };
+  const post = await getPostBySlug(category, slug);
   if (!post) return { title: "Not found" };
 
   return {
@@ -98,9 +99,10 @@ function buildJsonLd(post: Awaited<ReturnType<typeof getPostBySlug>>, authorName
 }
 
 export default async function ArticlePage({ params }: PageProps) {
-  if (!isCategorySlug(params.category)) notFound();
-  const category: CategorySlug = params.category;
-  const post = await getPostBySlug(category, params.slug);
+  const { category: rawCategory, slug } = await params;
+  if (!isCategorySlug(rawCategory)) notFound();
+  const category: CategorySlug = rawCategory;
+  const post = await getPostBySlug(category, slug);
   if (!post) notFound();
 
   const author = await getAuthor(post.author);
