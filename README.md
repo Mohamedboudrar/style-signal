@@ -120,3 +120,5 @@ These are intentionally unfilled in the current draft (`content/seasonal/fall-20
 - 4 internal link targets
 
 Fill these in one pass after the first author profile and real cover image are added.
+
+# Made with Love
