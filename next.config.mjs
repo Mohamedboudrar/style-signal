@@ -1,3 +1,5 @@
+import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -6,5 +8,11 @@ const nextConfig = {
     remotePatterns: [],
   },
 };
+
+// Initializes the Cloudflare adapter when running `next dev` locally so
+// the dev server matches the Cloudflare runtime (Node compat layer,
+// assets binding, etc.). The `initOpenNextCloudflareForDev` call is a
+// no-op outside of dev mode.
+initOpenNextCloudflareForDev();
 
 export default nextConfig;

@@ -1,0 +1,42 @@
+{
+  // Cloudflare / OpenNext config for Style Signal.
+  //
+  // Required fields for @opennextjs/cloudflare:
+  //   - main: path to the worker entry the OpenNext build emits
+  //   - compatibility_date: >= 2024-09-23 (mandatory)
+  //   - compatibility_flags: nodejs_compat (mandatory for many Node APIs
+  //     that Next.js uses at runtime; this includes fs, async_hooks, etc.)
+  //   - assets.directory: static assets emitted by the OpenNext build
+  //   - assets.binding: name of the binding the worker reads via env.ASSETS
+  //   - services.WORKER_SELF_REFERENCE: required for OpenNext to call back
+  //     into the same worker for ISR / on-demand revalidation
+  //
+  // `name` will be the Cloudflare Worker name on deploy. The default
+  // `style-signal` is fine for local preview; for production, change it
+  // to a real, unique name (e.g. style-signal-prod).
+
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "style-signal",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2024-12-30",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "style-signal"
+    }
+  ],
+  "vars": {
+    "NEXTJS_ENV": "production"
+  },
+  "observability": {
+    "enabled": true
+  }
+}

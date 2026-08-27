@@ -7,6 +7,13 @@
 /.next/
 /out/
 
+# opennext / cloudflare
+/.open-next/
+.wrangler/
+.dev.vars
+*.mf
+.mf
+
 # production
 /build
 
