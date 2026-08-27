@@ -1,0 +1,75 @@
+import type { Metadata } from "next";
+import { Inter, Fraunces } from "next/font/google";
+
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { site } from "@/lib/site";
+import "./globals.css";
+
+// Body — clean, modern sans-serif. Variable axis so we can use weight
+// 300-700 without paying for a 4th font weight.
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+// Display — modern editorial serif with optical sizing. Used only for
+// major editorial elements (H1, H2, eyebrows, hero text).
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-serif",
+  display: "swap",
+  axes: ["opsz"],
+});
+
+// Fall back to a relative metadataBase while site.url is still a placeholder
+// (e.g. "https://[your-site].com"). `new URL` throws on bracketed placeholders;
+// catch that here and let Next.js derive the base from the request instead.
+// Remove the try/catch once the production domain is set in lib/site.ts.
+function resolveMetadataBase(): URL | undefined {
+  try {
+    return new URL(site.url);
+  } catch {
+    return undefined;
+  }
+}
+
+export const metadata: Metadata = {
+  title: {
+    default: `${site.name} — ${site.tagline}`,
+    template: `%s — ${site.name}`,
+  },
+  description: site.description,
+  metadataBase: resolveMetadataBase(),
+  openGraph: {
+    type: "website",
+    locale: site.language,
+    url: site.url,
+    siteName: site.name,
+    title: `${site.name} — ${site.tagline}`,
+    description: site.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: site.twitter,
+  },
+  // TODO: replace with real verification tags when the production domain is live.
+  // verification: { google: "...", other: { "msvalidate.01": "..." } },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
+      <body className="min-h-screen flex flex-col bg-ink-50 text-ink-800 font-sans antialiased">
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}

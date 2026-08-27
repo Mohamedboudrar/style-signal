@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --signal-accent: #8a2a25;
+  --ink: #1f1c18;
+  --ink-soft: #3a352e;
+  --ink-muted: #7a7268;
+  --ink-bg: #faf8f4;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-feature-settings: "kern", "liga", "calt", "ss01";
+  font-synthesis: none;
+}
+
+a {
+  @apply transition-colors;
+}
+
+::selection {
+  background: var(--signal-accent);
+  color: white;
+}
+
+/* Editorial helpers used by the article page. Kept here rather than as
+   components so they can be applied directly to MDX-rendered elements. */
+.editorial-eyebrow {
+  @apply text-xs font-semibold uppercase tracking-[0.18em] text-signal-500;
+}
+
+.editorial-rule {
+  @apply h-px w-12 bg-signal-500;
+}
+
+/* Inline figures inside the article body. Capped at 36rem (~576px) so
+   they sit comfortably inside the 44rem prose column without dominating
+   the surrounding text. The 4:5 ratio is set inline on each <img> in the
+   MDX. */
+.article-prose-body figure {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 36rem;
+  margin-top: 2.75rem;
+  margin-bottom: 2.75rem;
+}
+
+.article-prose-body figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.375rem;
+}
+
+.article-prose-body figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: #5a5247;
+  text-align: center;
+  font-style: normal;
+}
+
+/* Style the first blockquote (the Key Takeaways section) as the editorial
+   callout. Subsequent blockquotes keep the default prose blockquote style. */
+.article-prose-body > blockquote:first-of-type {
+  border-left: 1px solid #8a2a25;
+  padding-left: 1.5rem;
+  background: transparent;
+  font-style: normal;
+  color: inherit;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.article-prose-body > blockquote:first-of-type p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #3a352e;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.article-prose-body > blockquote:first-of-type p:first-child {
+  /* The "Key Takeaways" label line — render as the editorial eyebrow. */
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: #8a2a25;
+  margin-bottom: 0.75rem;
+}
+
+.article-prose-body > blockquote:first-of-type ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.article-prose-body > blockquote:first-of-type li {
+  position: relative;
+  padding-left: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #3a352e;
+  margin: 0.4rem 0;
+}
+
+.article-prose-body > blockquote:first-of-type li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65rem;
+  width: 0.4rem;
+  height: 1px;
+  background: #8a2a25;
+}
+
+/* "How to wear it" styling — a small editorial hook. The styling-advice
+   paragraphs in the trend sections start with <strong>How to wear it:</strong>.
+   We treat that opening as a small eyebrow inside the paragraph itself, then
+   indent the body of the advice slightly. */
+.article-prose-body p:has(> strong:first-child) {
+  border-left: 1px solid #d8cfc1;
+  padding-left: 1.25rem;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.article-prose-body p:has(> strong:first-child) > strong {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: #8a2a25;
+  margin-right: 0.5rem;
+}
