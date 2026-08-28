@@ -66,7 +66,7 @@ export function Footer() {
       </Container>
       <Container className="py-6 border-t border-ink-200/70 flex flex-col sm:flex-row justify-between gap-2 text-xs text-ink-400">
         <p>© {year} {site.name}. All rights reserved.</p>
-        <p>Built with Next.js, TypeScript, Tailwind CSS, and MDX.</p>
+        <p>Built with ♡</p>
       </Container>
     </footer>
   );
