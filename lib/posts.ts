@@ -6,6 +6,19 @@ import readingTime from "reading-time";
 import type { CategorySlug, Post, PostFrontmatter } from "./types";
 import { categories, isCategorySlug } from "./site";
 
+// Resolve the content directory at module load time.
+//
+// During the Next.js build (Node), `process.cwd()` is the project root, so
+// `<cwd>/content` is correct. At runtime inside the OpenNext/Cloudflare
+// worker sandbox, `process.cwd()` is `/` (the workerd sandbox root), and
+// the project's `content/` directory is mounted at `/content`. The same
+// absolute path works in both environments.
+//
+// The runtime read path is only hit for category listings (`/seasonal`,
+// `/affordable`) and for direct article renders during ISR. Static
+// article pages (the two SSG routes we ship today) are served from the
+// OpenNext static-assets cache configured in `open-next.config.ts`, which
+// does not require any runtime filesystem access.
 const CONTENT_ROOT = path.join(process.cwd(), "content");
 
 // Map category slug -> content/<category> directory.
