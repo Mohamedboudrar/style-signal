@@ -16,16 +16,18 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* Hero */}
+      {/* Hero. On mobile the brand wordmark + tagline already live in the
+          header, so we collapse the giant duplicate heading and let the
+          description lead. On sm+ the full editorial hero is shown. */}
       <section className="border-b border-ink-100">
-        <Container className="py-16 md:py-24 text-center">
-          <p className="text-sm uppercase tracking-[0.2em] text-signal-500 font-semibold">
+        <Container className="py-12 md:py-24 text-center">
+          <p className="hidden sm:block text-sm uppercase tracking-[0.2em] text-signal-500 font-semibold">
             {site.name}
           </p>
-          <h1 className="mt-4 text-5xl md:text-7xl font-serif font-semibold tracking-tight text-ink-900">
+          <h1 className="mt-4 text-4xl sm:text-5xl md:text-7xl font-serif font-semibold tracking-tight text-ink-900">
             {site.tagline}
           </h1>
-          <p className="mt-6 text-lg md:text-xl text-ink-600 max-w-2xl mx-auto">
+          <p className="mt-6 text-base sm:text-lg md:text-xl text-ink-600 max-w-2xl mx-auto">
             {site.description}
           </p>
         </Container>

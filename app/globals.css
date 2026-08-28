@@ -19,10 +19,24 @@ html {
 body {
   font-feature-settings: "kern", "liga", "calt", "ss01";
   font-synthesis: none;
+  /* Prevent any element from forcing a horizontal scroll on small
+     viewports (long URLs, oversized images, fixed-width widgets, etc.).
+     The page itself still scrolls vertically; this only blocks sideways
+     overflow. */
+  overflow-x: hidden;
 }
 
 a {
   @apply transition-colors;
+}
+
+/* Ensure long words / URLs break instead of pushing the layout wider on
+   very narrow screens (~320px). The default `overflow-wrap: break-word`
+   only breaks at soft wrap points; `anywhere` will break mid-word as a
+   last resort, which is what we want for editorial copy with long
+   proper nouns. */
+body, p, li, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: anywhere;
 }
 
 ::selection {
