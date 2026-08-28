@@ -56,6 +56,9 @@ export const metadata: Metadata = {
   },
   // TODO: replace with real verification tags when the production domain is live.
   // verification: { google: "...", other: { "msvalidate.01": "..." } },
+  icons: {
+    icon: "/favicon.jpeg",
+  },
 };
 
 export default function RootLayout({

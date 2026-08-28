@@ -14,7 +14,7 @@ export const site = {
   // TODO: replace with the production social handles.
   twitter: "@stylesignal",
   // Editor contact — fill when the first author profile is added.
-  editorEmail: "editor@[your-site].com",
+  editorEmail: "editor@stylesignal.com",
   language: "en-US",
 };
 

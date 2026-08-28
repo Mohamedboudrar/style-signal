@@ -52,18 +52,32 @@ export function Header() {
       <Container className="py-4 sm:py-5 flex items-center justify-between gap-3 sm:gap-6">
         <Link
           href="/"
-          className="flex items-baseline gap-2 sm:gap-3 group min-w-0"
+          aria-label={site.name}
+          className="group flex items-center gap-2 sm:gap-3 min-w-0"
           onClick={() => setOpen(false)}
         >
-          <span className="font-serif text-xl sm:text-2xl font-medium tracking-editorial text-ink-900 group-hover:text-signal-500 transition-colors whitespace-nowrap">
-            {site.name}
+          {/* Wordmark: stacked two-line serif masthead, set in the
+              publication's signal accent (#8a2a25 — the same color that
+              was previously applied on hover). Tighter line-height and
+              generous tracking keep the two words reading as one cohesive
+              block, like a print magazine masthead. Scales down on mobile
+              so it stays compact in the header. */}
+          <span
+            aria-hidden="true"
+            className="font-serif text-[1.05rem] sm:text-[1.35rem] font-medium uppercase tracking-[0.18em] sm:tracking-[0.22em] leading-[0.95] text-signal-500 group-hover:text-signal-600 transition-colors whitespace-nowrap select-none"
+          >
+            <span className="block">Style</span>
+            <span className="block">Signal</span>
           </span>
-          {/* Tagline: always visible (header brand identity). On mobile it
-              sits smaller and may wrap to a second line if space is tight;
-              the parent uses min-w-0 + flex so the wordmark keeps priority. */}
-          <span className="text-[0.6rem] sm:text-[0.7rem] font-medium uppercase tracking-[0.18em] sm:tracking-[0.22em] text-ink-400 leading-tight break-words min-w-0">
+          {/* Tagline: kept separate from the wordmark so the masthead
+              reads cleanly. Smaller and tracked-out, sitting to the right
+              of the wordmark on desktop. On mobile the stacked wordmark
+              already fills the available width, so the tagline is exposed
+              to screen readers only. */}
+          <span className="hidden sm:inline-block text-[0.7rem] font-medium uppercase tracking-[0.22em] text-ink-400 leading-tight min-w-0">
             {site.tagline}
           </span>
+          <span className="sr-only sm:hidden">{site.tagline}</span>
         </Link>
 
         {/* Desktop nav — hidden on mobile, takes over at sm+ */}
