@@ -31,6 +31,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
     },
     {
+      url: "https://stylesignal.dpdns.org/celebrity/hailey-bieber-flip-flop-style-2026",
+      lastModified: new Date(),
+    },
+    {
       url: "https://stylesignal.dpdns.org/trends/fall-2026-fashion-trends-youll-actually-see-everywhere",
       lastModified: new Date(),
     },

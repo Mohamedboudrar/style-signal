@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "pinterest-posts": {
+      "source": "kostja94/marketing-skills",
+      "sourceType": "github",
+      "skillPath": "skills/platforms/pinterest/SKILL.md",
+      "computedHash": "1d8de7a67d223db161d1248c53124b3fa8a42bc01374a2b8ce42daa063f6692e"
+    }
+  }
+}
