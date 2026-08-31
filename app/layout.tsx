@@ -54,6 +54,11 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: site.twitter,
   },
+  verification: {
+    other: {
+      "p:domain_verify": "56a06e736733ccd475215315847c32c3",
+    },
+  },
   // TODO: replace with real verification tags when the production domain is live.
   // verification: { google: "...", other: { "msvalidate.01": "..." } },
   icons: {
