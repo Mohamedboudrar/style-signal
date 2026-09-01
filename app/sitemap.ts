@@ -39,6 +39,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
     },
     {
+      url: "https://stylesignal.dpdns.org/trends/chic-tastemaker-wishlist",
+      lastModified: new Date(),
+    },
+    {
       url: "https://stylesignal.dpdns.org/about",
       lastModified: new Date(),
     },
