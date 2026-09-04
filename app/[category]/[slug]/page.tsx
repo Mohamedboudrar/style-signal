@@ -5,11 +5,13 @@ import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { ArticleHeader } from "@/components/ArticleHeader";
 import { Prose } from "@/components/Prose";
-import { getPostBySlug, getAllSlugs } from "@/lib/posts";
-import { getAuthor } from "@/lib/authors";
+import { getPostBySlug, getAllSlugs, getRelatedPosts } from "@/lib/posts";
+import { getAuthor, getAllAuthors } from "@/lib/authors";
 import { getCategory, isCategorySlug, site } from "@/lib/site";
 import { renderMdx } from "@/lib/mdx";
-import type { CategorySlug } from "@/lib/types";
+import { buildAuthorJsonLd, organizationJsonLd } from "@/lib/jsonld";
+import { ArticleCard } from "@/components/ArticleCard";
+import type { Author, CategorySlug } from "@/lib/types";
 
 interface PageProps {
   params: Promise<{ category: string; slug: string }>;
@@ -59,6 +61,9 @@ export async function generateMetadata({
 function buildJsonLd(post: Awaited<ReturnType<typeof getPostBySlug>>, authorName?: string) {
   if (!post) return null;
   const url = post.canonical ?? `${site.url}/${post.category}/${post.slug}`;
+  const image = post.coverImage && !post.coverImage.startsWith("[")
+    ? `${site.url}${post.coverImage.startsWith("/") ? post.coverImage : `/${post.coverImage}`}`
+    : undefined;
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -69,22 +74,14 @@ function buildJsonLd(post: Awaited<ReturnType<typeof getPostBySlug>>, authorName
         "description": post.description,
         "datePublished": post.date,
         "dateModified": post.lastUpdated ?? post.date,
-        "author": {
-          "@type": "Person",
-          "name": authorName ?? post.author,
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": site.name,
-          "url": site.url,
-        },
+        "author": buildAuthorJsonLd(post.author, authorName ?? post.author),
+        "publisher": { "@id": `${site.url}/#organization` },
         "mainEntityOfPage": { "@type": "WebPage", "@id": url },
-        "image": post.coverImage && !post.coverImage.startsWith("[")
-          ? post.coverImage
-          : undefined,
+        "image": image ? [image] : undefined,
         "keywords": post.keywords,
         "articleSection": getCategory(post.category).name,
         "wordCount": post.content.split(/\s+/).filter(Boolean).length,
+        "inLanguage": site.language,
       },
       {
         "@type": "BreadcrumbList",
@@ -94,6 +91,7 @@ function buildJsonLd(post: Awaited<ReturnType<typeof getPostBySlug>>, authorName
           { "@type": "ListItem", "position": 3, "name": post.title, "item": url },
         ],
       },
+      organizationJsonLd,
     ],
   };
 }
@@ -109,12 +107,16 @@ export default async function ArticlePage({ params }: PageProps) {
   const authorName = author?.name;
   const html = await renderMdx(post.content);
   const jsonLd = buildJsonLd(post, authorName);
+  const [related, allAuthors] = await Promise.all([
+    getRelatedPosts(post, 3),
+    author ? Promise.resolve<Author[]>([author]) : getAllAuthors(),
+  ]);
+  const relatedAuthorName = new Map<string, string>(
+    allAuthors.map((a: Author) => [a.slug, a.name])
+  );
 
   return (
     <>
-      {/* JSON-LD structured data. Placeholders in canonical/author will fail
-          Google Rich Results Test until site URL and author profiles are
-          finalized — see memory/style-signal-publication.md. */}
       {jsonLd && (
         <script
           type="application/ld+json"
@@ -131,8 +133,12 @@ export default async function ArticlePage({ params }: PageProps) {
             <img
               src={post.coverImage}
               alt={post.coverImageAlt ?? post.title}
-              className="w-full h-auto rounded-md"
+              width={1600}
+              height={900}
               loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              className="w-full h-auto rounded-md"
             />
           </figure>
         )}
@@ -176,6 +182,26 @@ export default async function ArticlePage({ params }: PageProps) {
             </div>
           )}
         </footer>
+
+        {related.length > 0 && (
+          <section
+            aria-label="Related articles"
+            className="mt-20 pt-12 border-t border-ink-200/70"
+          >
+            <h2 className="text-2xl font-serif font-semibold text-ink-900 mb-8">
+              Related
+            </h2>
+            <div className="grid gap-10 md:grid-cols-3">
+              {related.map((p) => (
+                <ArticleCard
+                  key={`${p.category}-${p.slug}`}
+                  post={p}
+                  authorName={relatedAuthorName.get(p.author)}
+                />
+              ))}
+            </div>
+          </section>
+        )}
       </Container>
     </>
   );

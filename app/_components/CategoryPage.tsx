@@ -1,9 +1,11 @@
 import { notFound } from "next/navigation";
+
 import { Container } from "@/components/Container";
 import { ArticleCard } from "@/components/ArticleCard";
 import { getPostsByCategory } from "@/lib/posts";
 import { getAllAuthors } from "@/lib/authors";
 import { categories, isCategorySlug } from "@/lib/site";
+import { buildCategoryJsonLd } from "@/lib/jsonld";
 import type { CategorySlug } from "@/lib/types";
 
 interface CategoryPageProps {
@@ -20,8 +22,14 @@ export async function CategoryPage({ category }: CategoryPageProps) {
   ]);
   const authorBySlug = new Map(authors.map((a) => [a.slug, a.name]));
   const info = categories[slug];
+  const jsonLd = buildCategoryJsonLd(info, posts);
 
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     <Container as="section" className="py-12 md:py-16">
       <header className="mb-10">
         <p className="text-sm uppercase tracking-[0.2em] text-signal-500 font-semibold">
@@ -54,5 +62,6 @@ export async function CategoryPage({ category }: CategoryPageProps) {
         </div>
       )}
     </Container>
+    </>
   );
 }

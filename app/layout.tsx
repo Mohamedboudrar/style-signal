@@ -23,25 +23,16 @@ const fraunces = Fraunces({
   axes: ["opsz"],
 });
 
-// Fall back to a relative metadataBase while site.url is still a placeholder
-// (e.g. "https://[your-site].com"). `new URL` throws on bracketed placeholders;
-// catch that here and let Next.js derive the base from the request instead.
-// Remove the try/catch once the production domain is set in lib/site.ts.
-function resolveMetadataBase(): URL | undefined {
-  try {
-    return new URL(site.url);
-  } catch {
-    return undefined;
-  }
-}
-
 export const metadata: Metadata = {
   title: {
     default: `${site.name} — ${site.tagline}`,
     template: `%s — ${site.name}`,
   },
   description: site.description,
-  metadataBase: resolveMetadataBase(),
+  metadataBase: new URL(site.url),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: site.language,
@@ -59,8 +50,6 @@ export const metadata: Metadata = {
       "p:domain_verify": "56a06e736733ccd475215315847c32c3",
     },
   },
-  // TODO: replace with real verification tags when the production domain is live.
-  // verification: { google: "...", other: { "msvalidate.01": "..." } },
   icons: {
     icon: "/favicon.jpeg",
   },
@@ -73,6 +62,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
+      <head>
+        {/* Preconnect to GA's tag manager origin so the afterInteractive
+            GA script doesn't pay DNS+TLS cost on first paint. */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link
+          rel="dns-prefetch"
+          href="https://www.googletagmanager.com"
+        />
+      </head>
       <body className="min-h-screen flex flex-col bg-ink-50 text-ink-800 font-sans antialiased">
         <Header />
         <main className="flex-1">{children}</main>

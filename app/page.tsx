@@ -4,6 +4,9 @@ import { ArticleCard } from "@/components/ArticleCard";
 import { getRecentPosts } from "@/lib/posts";
 import { getAllAuthors } from "@/lib/authors";
 import { site, categoryList } from "@/lib/site";
+import { buildHomeJsonLd } from "@/lib/jsonld";
+
+const homeJsonLd = buildHomeJsonLd();
 
 export default async function HomePage() {
   const [recent, authors] = await Promise.all([
@@ -16,6 +19,11 @@ export default async function HomePage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }}
+      />
+
       {/* Hero. On mobile the brand wordmark + tagline already live in the
           header, so we collapse the giant duplicate heading and let the
           description lead. On sm+ the full editorial hero is shown. */}
@@ -41,7 +49,7 @@ export default async function HomePage() {
               Latest
             </h2>
             <Link
-              href="/seasonal"
+              href="/trends"
               className="text-sm text-signal-500 hover:text-signal-600"
             >
               See all →

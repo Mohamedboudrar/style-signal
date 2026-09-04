@@ -1,0 +1,453 @@
+{
+  "subagent": "seo-cluster",
+  "url": "https://stylesignal.dpdns.org",
+  "score": 38,
+  "clusters_identified": [
+    {
+      "name": "Fall 2026 Fashion Trends",
+      "pillar": "/seasonal/fall-2026-fashion-trends",
+      "spokes": [
+        "/trends/fall-2026-fashion-trends-youll-actually-see-everywhere",
+        "/trends/chic-tastemaker-wishlist",
+        "/affordable/fall-2026-fashion-trends-under-100",
+        "/celebrity/hailey-bieber-flip-flop-style-2026"
+      ],
+      "completeness": 3,
+      "gaps": [
+        "Fall 2026 color trends",
+        "Fall 2026 shoe trends",
+        "Fall 2026 bag trends",
+        "Fall 2026 outerwear",
+        "Fall 2026 denim",
+        "Designer fall 2026 collections recap",
+        "How to wear fall 2026 trends over 40",
+        "Fall 2026 workwear capsule"
+      ]
+    },
+    {
+      "name": "Celebrity Style",
+      "pillar": "/celebrity",
+      "spokes": [
+        "/celebrity/hailey-bieber-flip-flop-style-2026"
+      ],
+      "completeness": 2,
+      "gaps": [
+        "Zendaya fall 2026 looks",
+        "Sofia Richie style guide",
+        "Kendall Jenner off-duty style",
+        "Celebrity street style roundup fall 2026",
+        "Best dressed celebrities fall 2026"
+      ]
+    },
+    {
+      "name": "Affordable Fashion",
+      "pillar": "/affordable",
+      "spokes": [
+        "/affordable/fall-2026-fashion-trends-under-100"
+      ],
+      "completeness": 2,
+      "gaps": [
+        "Fall 2026 trends under $50",
+        "Best Amazon fall 2026 finds",
+        "Affordable fall 2026 boots",
+        "Under-$100 fall workwear",
+        "Affordable fall 2026 bags"
+      ]
+    },
+    {
+      "name": "Tastemaker / Curated Wish List",
+      "pillar": null,
+      "spokes": [
+        "/trends/chic-tastemaker-wishlist"
+      ],
+      "completeness": 1,
+      "gaps": [
+        "No dedicated pillar page exists for tastemaker/wishlist content",
+        "Missing seasonal wish lists (summer, spring)",
+        "Missing capsule wardrobe content",
+        "Missing editor's picks pages"
+      ]
+    }
+  ],
+  "internal_link_matrix": {
+    "/seasonal/fall-2026-fashion-trends": [
+      "/",
+      "/trends",
+      "/celebrity",
+      "/affordable",
+      "/seasonal",
+      "/about",
+      "/authors/style-signal-editorial",
+      "/authors"
+    ],
+    "/trends/fall-2026-fashion-trends-youll-actually-see-everywhere": [
+      "/",
+      "/trends",
+      "/celebrity",
+      "/affordable",
+      "/seasonal",
+      "/about",
+      "/authors/style-signal-editorial",
+      "/affordable/fall-2026-fashion-trends-under-100",
+      "/seasonal/fall-2026-fashion-trends",
+      "/authors"
+    ],
+    "/trends/chic-tastemaker-wishlist": [
+      "/",
+      "/trends",
+      "/celebrity",
+      "/affordable",
+      "/seasonal",
+      "/about",
+      "/authors/style-signal-editorial",
+      "/seasonal/fall-2026-fashion-trends",
+      "/trends/fall-2026-fashion-trends-youll-actually-see-everywhere",
+      "/authors"
+    ],
+    "/affordable/fall-2026-fashion-trends-under-100": [
+      "/",
+      "/trends",
+      "/celebrity",
+      "/affordable",
+      "/seasonal",
+      "/about",
+      "/seasonal/fall-2026-fashion-trends",
+      "/authors/style-signal-editorial"
+    ],
+    "/celebrity/hailey-bieber-flip-flop-style-2026": [
+      "/",
+      "/trends",
+      "/celebrity",
+      "/affordable",
+      "/seasonal",
+      "/about",
+      "/authors/style-signal-editorial",
+      "/authors"
+    ],
+    "/seasonal": [
+      "/",
+      "/trends",
+      "/celebrity",
+      "/affordable",
+      "/seasonal",
+      "/about",
+      "/seasonal/fall-2026-fashion-trends",
+      "/authors/style-signal-editorial",
+      "/authors"
+    ],
+    "/trends": [
+      "/",
+      "/trends",
+      "/celebrity",
+      "/affordable",
+      "/seasonal",
+      "/about",
+      "/trends/chic-tastemaker-wishlist",
+      "/authors/style-signal-editorial",
+      "/trends/fall-2026-fashion-trends-youll-actually-see-everywhere",
+      "/authors"
+    ],
+    "/celebrity": [
+      "/",
+      "/trends",
+      "/celebrity",
+      "/affordable",
+      "/seasonal",
+      "/about",
+      "/celebrity/hailey-bieber-flip-flop-style-2026",
+      "/authors/style-signal-editorial"
+    ],
+    "/affordable": [
+      "/",
+      "/trends",
+      "/celebrity",
+      "/affordable",
+      "/seasonal",
+      "/about",
+      "/images/fall-2026-under-100-hero.jpeg",
+      "/affordable/fall-2026-fashion-trends-under-100",
+      "/authors/style-signal-editorial",
+      "/authors"
+    ]
+  },
+  "orphan_articles": [
+    "/celebrity/hailey-bieber-flip-flop-style-2026"
+  ],
+  "cannibalization_risks": [
+    {
+      "topic": "fall 2026 fashion trends",
+      "competing_urls": [
+        "/seasonal/fall-2026-fashion-trends",
+        "/trends/fall-2026-fashion-trends-youll-actually-see-everywhere",
+        "/affordable/fall-2026-fashion-trends-under-100"
+      ],
+      "recommendation": "differentiate"
+    },
+    {
+      "topic": "fall 2026 trend roundup",
+      "competing_urls": [
+        "/seasonal/fall-2026-fashion-trends",
+        "/trends/fall-2026-fashion-trends-youll-actually-see-everywhere"
+      ],
+      "recommendation": "differentiate"
+    }
+  ],
+  "url_structure_audit": {
+    "slugs": [
+      "/seasonal/fall-2026-fashion-trends",
+      "/trends/fall-2026-fashion-trends-youll-actually-see-everywhere",
+      "/trends/chic-tastemaker-wishlist",
+      "/affordable/fall-2026-fashion-trends-under-100",
+      "/celebrity/hailey-bieber-flip-flop-style-2026"
+    ],
+    "issues": [
+      "/trends/fall-2026-fashion-trends-youll-actually-see-everywhere is over 60 characters, contains redundant modifier ('youll actually see everywhere') and overlaps with pillar slug",
+      "No /seasonal/ prefix on the seasonal pillar article vs. /trends/ and /affordable/ for the parallel coverage - URL hierarchy is inconsistent",
+      "/celebrity/hailey-bieber-flip-flop-style-2026 is descriptive but does not include the seasonal context; would be stronger as /celebrity/hailey-bieber-fall-2026-style",
+      "/trends/chic-tastemaker-wishlist lacks seasonal/year qualifier and creates a vague topical anchor that is hard to scale into a cluster"
+    ]
+  },
+  "content_gaps": [
+    {
+      "cluster": "Fall 2026 Fashion Trends",
+      "missing_topic": "Fall 2026 color trends",
+      "search_intent": "what colors are in for fall 2026, pantone fall 2026, fall 2026 color palette",
+      "estimated_value": "high",
+      "difficulty": "low"
+    },
+    {
+      "cluster": "Fall 2026 Fashion Trends",
+      "missing_topic": "Fall 2026 shoe trends",
+      "search_intent": "fall 2026 boots, fall 2026 shoes trending, fall 2026 loafers",
+      "estimated_value": "high",
+      "difficulty": "low"
+    },
+    {
+      "cluster": "Fall 2026 Fashion Trends",
+      "missing_topic": "Fall 2026 bag trends",
+      "search_intent": "fall 2026 handbag trends, fall 2026 purse styles",
+      "estimated_value": "high",
+      "difficulty": "low"
+    },
+    {
+      "cluster": "Fall 2026 Fashion Trends",
+      "missing_topic": "Fall 2026 outerwear guide",
+      "search_intent": "fall 2026 jackets, fall 2026 coats trending",
+      "estimated_value": "high",
+      "difficulty": "medium"
+    },
+    {
+      "cluster": "Fall 2026 Fashion Trends",
+      "missing_topic": "Designer fall 2026 collections recap",
+      "search_intent": "fall 2026 runway recap, designer collections fall 2026",
+      "estimated_value": "medium",
+      "difficulty": "medium"
+    },
+    {
+      "cluster": "Fall 2026 Fashion Trends",
+      "missing_topic": "How to wear fall 2026 trends over 40",
+      "search_intent": "fall fashion over 40, age-appropriate fall trends",
+      "estimated_value": "high",
+      "difficulty": "low"
+    },
+    {
+      "cluster": "Fall 2026 Fashion Trends",
+      "missing_topic": "Fall 2026 workwear capsule",
+      "search_intent": "fall office outfits 2026, fall workwear trends",
+      "estimated_value": "medium",
+      "difficulty": "low"
+    },
+    {
+      "cluster": "Celebrity Style",
+      "missing_topic": "Zendaya fall 2026 looks",
+      "search_intent": "zendaya fall 2026 outfits, zendaya style",
+      "estimated_value": "high",
+      "difficulty": "low"
+    },
+    {
+      "cluster": "Celebrity Style",
+      "missing_topic": "Sofia Richie fall 2026 style",
+      "search_intent": "sofia richie style, sofia richie outfits",
+      "estimated_value": "high",
+      "difficulty": "low"
+    },
+    {
+      "cluster": "Celebrity Style",
+      "missing_topic": "Best dressed celebrities fall 2026",
+      "search_intent": "best dressed celebrities fall 2026, celebrity fashion week",
+      "estimated_value": "medium",
+      "difficulty": "medium"
+    },
+    {
+      "cluster": "Affordable Fashion",
+      "missing_topic": "Fall 2026 trends under $50",
+      "search_intent": "cheap fall fashion 2026, fall 2026 under $50",
+      "estimated_value": "medium",
+      "difficulty": "low"
+    },
+    {
+      "cluster": "Affordable Fashion",
+      "missing_topic": "Best Amazon fall 2026 finds",
+      "search_intent": "amazon fall fashion finds, amazon fall 2026",
+      "estimated_value": "high",
+      "difficulty": "low"
+    },
+    {
+      "cluster": "Tastemaker / Wish List",
+      "missing_topic": "Summer 2026 wish list",
+      "search_intent": "summer 2026 wishlist, summer fashion wishlist",
+      "estimated_value": "medium",
+      "difficulty": "low"
+    },
+    {
+      "cluster": "Tastemaker / Wish List",
+      "missing_topic": "Fall capsule wardrobe 2026",
+      "search_intent": "fall capsule wardrobe 2026",
+      "estimated_value": "medium",
+      "difficulty": "low"
+    }
+  ],
+  "findings": [
+    {
+      "id": "CLUSTER-001",
+      "severity": "critical",
+      "category": "cannibalization",
+      "title": "Three articles target the same primary keyword 'fall 2026 fashion trends'",
+      "url_affected": "/seasonal/fall-2026-fashion-trends",
+      "evidence": "The pillar at /seasonal/fall-2026-fashion-trends, the /trends/fall-2026-fashion-trends-youll-actually-see-everywhere article, and /affordable/fall-2026-fashion-trends-under-100 all contain the exact phrase 'fall 2026 fashion trends' in their slugs and titles. Google will treat these as competing for the same SERP and split ranking signals across them.",
+      "expected": "One definitive pillar for 'fall 2026 fashion trends' plus differentiated spokes that target modifiers (e.g., 'fall 2026 fashion trends under $100', 'fall 2026 fashion trends you'll actually see everywhere').",
+      "fix": "differentiate - rewrite the two non-pillar article titles so the primary keyword is unique. Suggested rewrites: keep pillar 'Fall 2026 Fashion Trends: The Definitive Guide', rewrite trends article to 'The Fall 2026 Trends You'll Actually See Everywhere (And Where to Buy Them)' with focus on edit selection rationale, rewrite affordable article to 'Fall 2026 Fashion Trends You Can Buy for Under $100'.",
+      "first_principle": "Keyword cannibalization dilutes PageRank, confuses topical authority signals, and prevents any single page from ranking. Google needs one canonical answer per query.",
+      "dependency": "Must be fixed before publishing additional fall 2026 spokes; otherwise new spokes will inherit the same cannibalization risk.",
+      "falsifiability": "Search Google for 'fall 2026 fashion trends' in incognito and verify only one of the three URLs appears in the top 20 within 60 days.",
+      "leading_indicator": "Search Console impressions for the cluster should consolidate to one URL; CTR for the other two should not exceed 1%."
+    },
+    {
+      "id": "CLUSTER-002",
+      "severity": "critical",
+      "category": "hub-spoke",
+      "title": "Pillar page does not link to any spoke articles",
+      "url_affected": "/seasonal/fall-2026-fashion-trends",
+      "evidence": "The seasonal pillar links only to header/footer navigation, /about, /authors, and the home page. It does NOT link to the four content spokes (/trends/fall-2026-fashion-trends-youll-actually-see-everywhere, /trends/chic-tastemaker-wishlist, /affordable/fall-2026-fashion-trends-under-100, /celebrity/hailey-bieber-flip-flop-style-2026).",
+      "expected": "The pillar must link to every spoke with descriptive anchor text so both users and crawlers can traverse the architecture.",
+      "fix": "Add a 'Related Coverage' or 'Read Next' section in the pillar with anchor text like 'fall 2026 trends you'll actually see everywhere' linking to each spoke. Add the same spokes to /seasonal hub page.",
+      "first_principle": "Hub-spoke architecture requires bidirectional links: pillar -> spoke distributes PageRank; spoke -> pillar consolidates authority.",
+      "dependency": "Required for any new cluster member to receive PageRank and topical relevance signals.",
+      "falsifiability": "Crawl the pillar with Screaming Frog and confirm at least 4 contextual internal links to spoke URLs.",
+      "leading_indicator": "Spoke URLs should begin appearing in Search Console with 'Internal Link' as the top discovery source within 14 days of recrawl."
+    },
+    {
+      "id": "CLUSTER-003",
+      "severity": "high",
+      "category": "orphan-content",
+      "title": "Hailey Bieber celebrity article is an orphan page",
+      "url_affected": "/celebrity/hailey-bieber-flip-flop-style-2026",
+      "evidence": "No article or pillar links to this URL with contextual anchor text. Only the /celebrity hub and the global header link to it; neither constitutes a contextual editorial link.",
+      "expected": "Every spoke article must have at least 3 contextual internal inbound links from within the cluster.",
+      "fix": "Add an inbound link from the /seasonal/fall-2026-fashion-trends pillar (e.g., 'See how Hailey Bieber is styling the flip-flop trend this fall'), and add an inbound link from the wish list article (as a tastemaker reference).",
+      "first_principle": "Orphan pages receive no PageRank flow from the editorial graph and are rarely discovered or ranked for cluster queries.",
+      "dependency": "Without inbound links, expanding the celebrity cluster is a wasted investment.",
+      "falsifiability": "Internal-link audit tool should show at least 2 contextual inbound links to the celebrity article.",
+      "leading_indicator": "Search Console average position for the celebrity article should improve from unindexed to top 50 within 30 days."
+    },
+    {
+      "id": "CLUSTER-004",
+      "severity": "high",
+      "category": "content-gap",
+      "title": "Fall 2026 cluster has only 4 spokes covering 1 season - insufficient for topical authority",
+      "url_affected": "/seasonal/fall-2026-fashion-trends",
+      "evidence": "To own 'fall 2026 fashion trends' in SERPs requires coverage of colors, shoes, bags, outerwear, denim, designer runway, workwear, and demographic-specific angles. Current cluster covers only 'general overview', 'editorial selection', 'budget picks', and one celebrity adjacent piece.",
+      "expected": "8-12 spokes per cluster is the standard threshold for Google to recognize topical authority on a seasonal trend.",
+      "fix": "Plan and produce the 8 gap topics listed above (color, shoes, bags, outerwear, denim, designer runway, over-40, workwear) on a 60-day cadence.",
+      "first_principle": "Topical authority is built by demonstrating comprehensive coverage of an entity. Thin clusters rank inconsistently.",
+      "dependency": "Unlocks monetization (affiliate) and unlocks featured snippet eligibility for cluster keywords.",
+      "falsifiability": "After publishing 8 additional spokes, 'site:' search for fall 2026 on the domain should return >= 12 indexed URLs.",
+      "leading_indicator": "Search Console impressions for 'fall 2026 [X]' long-tail queries should grow >50% MoM after each new spoke is indexed."
+    },
+    {
+      "id": "CLUSTER-005",
+      "severity": "high",
+      "category": "hub-spoke",
+      "title": "Celebrity, Affordable, and Tastemaker sub-clusters each have only 1 spoke",
+      "url_affected": "/celebrity",
+      "evidence": "/celebrity has only 1 article (Hailey Bieber); /affordable has only 1 article (under $100); the wish list format has only 1 article with no pillar. None of these are real clusters.",
+      "expected": "Each sub-cluster needs a pillar + 5-8 spokes to compete for category keywords like 'celebrity style' or 'affordable fashion'.",
+      "fix": "Build out each sub-cluster over Q4 2026 - Q1 2027 with the content calendar in the markdown report.",
+      "first_principle": "A single article does not constitute a cluster; it is a content silo waiting to be built.",
+      "dependency": "Affects affiliate revenue diversification and protects against seasonal traffic drops.",
+      "falsifiability": "Index coverage report should show >= 6 articles per category hub within 6 months.",
+      "leading_indicator": "Each category hub should drive >20% of internal click traffic within 90 days."
+    },
+    {
+      "id": "CLUSTER-006",
+      "severity": "medium",
+      "category": "internal-linking",
+      "title": "Only 2 of 4 spokes link back to the pillar",
+      "url_affected": "/seasonal/fall-2026-fashion-trends",
+      "evidence": "/trends/fall-2026-fashion-trends-youll-actually-see-everywhere and /trends/chic-tastemaker-wishlist both link to the pillar. /affordable/fall-2026-fashion-trends-under-100 also links to the pillar. /celebrity/hailey-bieber-flip-flop-style-2026 does NOT link to the pillar (also flagged as orphan).",
+      "expected": "Every spoke must contain at least 1 contextual link back to its pillar.",
+      "fix": "Add a one-line contextual link in the celebrity article body mentioning the pillar as a broader trend reference.",
+      "first_principle": "Spoke-to-pillar links consolidate authority on the pillar target query.",
+      "dependency": "Required for pillar to rank for its head term.",
+      "falsifiability": "Re-fetch the celebrity article HTML and confirm presence of an anchor tag pointing to /seasonal/fall-2026-fashion-trends.",
+      "leading_indicator": "Pillar's Search Console average position should improve 5-10 places within 60 days."
+    },
+    {
+      "id": "CLUSTER-007",
+      "severity": "medium",
+      "category": "url-structure",
+      "title": "Long, redundant slug on key trends article",
+      "url_affected": "/trends/fall-2026-fashion-trends-youll-actually-see-everywhere",
+      "evidence": "Slug is 64 characters and contains the phrase 'youll actually see everywhere' which adds no keyword value and creates SERP duplication with the pillar slug.",
+      "expected": "Slugs under 60 characters, no redundant modifiers, primary keyword only.",
+      "fix": "Either rewrite to /trends/fall-2026-trends-youll-actually-wear (43 chars, distinct from pillar) or, since redirects are costly, edit title and H1 to differentiate and accept the slug.",
+      "first_principle": "Long slugs truncate in SERPs and dilute keyword prominence.",
+      "dependency": "Blocks clean URL hierarchy for future trends spokes.",
+      "falsifiability": "SERP display of the slug should be fully visible without truncation in mobile search.",
+      "leading_indicator": "Click-through rate for the trends article in Search Console should not be depressed."
+    },
+    {
+      "id": "CLUSTER-008",
+      "severity": "medium",
+      "category": "hub-spoke",
+      "title": "Wish list format has no pillar and cannot scale",
+      "url_affected": "/trends/chic-tastemaker-wishlist",
+      "evidence": "There is no /wishlist or /tastemaker hub page. The single wish list article is parked under /trends but its format is not really a 'trend article' - it is a curated shopping list.",
+      "expected": "Either move to /wishlist hub or create /tastemaker hub and grow into 5-8 wish list spokes.",
+      "fix": "Create /wishlist or /tastemaker hub page and migrate the existing article; plan seasonal wish lists (summer, winter, spring).",
+      "first_principle": "Editorial format clusters need their own hub to scale and to be merchandised.",
+      "dependency": "Required before producing more wish list content.",
+      "falsifiability": "Hub page should appear in crawl with at least 2 wish list spokes linked.",
+      "leading_indicator": "Wish list format impressions should grow in Search Console as new wish list URLs are added."
+    },
+    {
+      "id": "CLUSTER-009",
+      "severity": "low",
+      "category": "internal-linking",
+      "title": "Spoke-to-spoke interlinks are sparse",
+      "url_affected": "/trends/chic-tastemaker-wishlist",
+      "evidence": "Only one spoke (/trends/chic-tastemaker-wishlist) links to another spoke (/trends/fall-2026-fashion-trends-youll-actually-see-everywhere). Most spoke pairs are not linked.",
+      "expected": "Spokes within the same cluster should interlink 1-2 times with contextual anchor text.",
+      "fix": "Add 1-2 contextual cross-links per spoke pair in the same cluster. E.g., the affordable article should reference the trends article as 'our editor's curated pick'.",
+      "first_principle": "Cluster-internal links reinforce semantic similarity and distribute PageRank within the cluster.",
+      "dependency": "Quality-of-life improvement; not a blocker.",
+      "falsifiability": "Crawl report should show at least 6 spoke-to-spoke contextual links across the cluster.",
+      "leading_indicator": "Pages-per-session metric in analytics should rise."
+    },
+    {
+      "id": "CLUSTER-010",
+      "severity": "low",
+      "category": "content-gap",
+      "title": "No historical or evergreen trend content for anchor pages",
+      "url_affected": "/trends",
+      "evidence": "The /trends hub has only 2 articles. There is no archive of prior seasons, no evergreen 'how to identify trends' guide.",
+      "expected": "Each hub should have an evergreen pillar plus recurring seasonal content.",
+      "fix": "Add an evergreen 'How to spot a fashion trend' guide at /trends/how-to-spot-a-fashion-trend.",
+      "first_principle": "Evergreen pillars attract consistent traffic between seasonal spikes.",
+      "dependency": "Nice-to-have; improves stability of organic traffic.",
+      "falsifiability": "Site should rank for 'how to spot a fashion trend' queries.",
+      "leading_indicator": "Steady baseline organic traffic independent of season."
+    }
+  ],
+  "summary": "Style Signal has the seeds of a 'Fall 2026 fashion' cluster but executes it as a flat hub with three pages competing for the same primary keyword, an orphan celebrity page, and a pillar that does not link to its own spokes. Topical authority is currently weak (score 38/100); the site needs immediate deduplication of the head term, bidirectional pillar-spoke links, 6-8 new fall 2026 spokes (color, shoes, bags, outerwear, denim, designer runway, over-40, workwear), and parallel buildout of the celebrity, affordable, and wish list sub-clusters to convert 5 articles into a real content moat."
+}

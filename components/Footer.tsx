@@ -53,7 +53,6 @@ export function Footer() {
               </Link>
             </li>
             <li>
-              {/* TODO: wire to a real contact page when the team inbox is set up. */}
               <a
                 href={`mailto:${site.editorEmail}`}
                 className="text-ink-700 hover:text-signal-500 transition-colors"

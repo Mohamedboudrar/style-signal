@@ -27,6 +27,10 @@ export function ArticleCard({ post, authorName, featured = false }: ArticleCardP
             <img
               src={post.coverImage}
               alt={post.coverImageAlt ?? post.title}
+              width={featured ? 1280 : 800}
+              height={featured ? 720 : 600}
+              loading="lazy"
+              decoding="async"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>

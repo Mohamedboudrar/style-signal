@@ -140,3 +140,46 @@ export async function getRecentPosts(limit = 6): Promise<Post[]> {
   const all = await getAllPosts();
   return all.slice(0, limit);
 }
+
+// Pick up to `limit` related posts for the given post.
+//
+// Priority:
+//   1. Other posts in the same category (excluding self).
+//   2. Other posts by the same author (excluding self and same-category
+//      matches already collected).
+//   3. Most recent overall posts, excluding everything already in the set.
+//
+// Result is returned in the original priority order so a same-category
+// article always appears above a same-author one, which gives editors
+// predictable behavior when tuning per-article relationships.
+export async function getRelatedPosts(
+  post: Post,
+  limit = 3
+): Promise<Post[]> {
+  const all = await getAllPosts();
+  const sameCategory = all.filter(
+    (p) => p.category === post.category && p.slug !== post.slug
+  );
+  const sameAuthor = all.filter(
+    (p) => p.author === post.author && p.slug !== post.slug && p.category !== post.category
+  );
+  const recent = all.filter(
+    (p) => p.slug !== post.slug && p.author !== post.author
+  );
+
+  const result: Post[] = [];
+  const seen = new Set<string>([`${post.category}/${post.slug}`]);
+  function take(candidates: Post[]) {
+    for (const p of candidates) {
+      if (result.length >= limit) break;
+      const key = `${p.category}/${p.slug}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      result.push(p);
+    }
+  }
+  take(sameCategory);
+  take(sameAuthor);
+  take(recent);
+  return result;
+}

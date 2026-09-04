@@ -1,55 +1,69 @@
 import type { MetadataRoute } from "next";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: "https://stylesignal.dpdns.org",
-      lastModified: new Date(),
-    },
-    {
-      url: "https://stylesignal.dpdns.org/seasonal",
-      lastModified: new Date(),
-    },
-    {
-      url: "https://stylesignal.dpdns.org/affordable",
-      lastModified: new Date(),
-    },
-    {
-      url: "https://stylesignal.dpdns.org/celebrity",
-      lastModified: new Date(),
-    },
-    {
-      url: "https://stylesignal.dpdns.org/trends",
-      lastModified: new Date(),
-    },
-    {
-      url: "https://stylesignal.dpdns.org/seasonal/fall-2026-fashion-trends",
-      lastModified: new Date(),
-    },
-    {
-      url: "https://stylesignal.dpdns.org/affordable/fall-2026-fashion-trends-under-100",
-      lastModified: new Date(),
-    },
-    {
-      url: "https://stylesignal.dpdns.org/celebrity/hailey-bieber-flip-flop-style-2026",
-      lastModified: new Date(),
-    },
-    {
-      url: "https://stylesignal.dpdns.org/trends/fall-2026-fashion-trends-youll-actually-see-everywhere",
-      lastModified: new Date(),
-    },
-    {
-      url: "https://stylesignal.dpdns.org/trends/chic-tastemaker-wishlist",
-      lastModified: new Date(),
-    },
-    {
-      url: "https://stylesignal.dpdns.org/about",
-      lastModified: new Date(),
-    },
-    {
-      url: "https://stylesignal.dpdns.org/authors",
-      lastModified: new Date(),
-    },
+import { site, categoryList } from "@/lib/site";
+import { getAllPosts } from "@/lib/posts";
+import { getAllAuthors } from "@/lib/authors";
 
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const [posts, authors] = await Promise.all([getAllPosts(), getAllAuthors()]);
+
+  const now = new Date();
+
+  const staticEntries: MetadataRoute.Sitemap = [
+    {
+      url: `${site.url}/`,
+      lastModified: now,
+      changeFrequency: "daily",
+      priority: 1.0,
+    },
+    {
+      url: `${site.url}/about`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: `${site.url}/authors`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+  ];
+
+  const categoryEntries: MetadataRoute.Sitemap = categoryList.map((cat) => ({
+    url: `${site.url}/${cat.slug}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }));
+
+  // Article entries use the real lastUpdated/date from frontmatter so
+  // Google can use the timestamp as a freshness signal.
+  const postEntries: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: `${site.url}/${post.category}/${post.slug}`,
+    lastModified: new Date(post.lastUpdated ?? post.date),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  const authorEntries: MetadataRoute.Sitemap = authors.map((author) => {
+    // Use the most recent post date for the author's lastmod when available,
+    // otherwise fall back to "now" so the entry still carries a timestamp.
+    const latest = author.posts
+      .map((p) => new Date(p.lastUpdated ?? p.date).getTime())
+      .sort((a, b) => b - a)[0];
+    return {
+      url: `${site.url}/authors/${author.slug}`,
+      lastModified: latest ? new Date(latest) : now,
+      changeFrequency: "monthly" as const,
+      priority: 0.4,
+    };
+  });
+
+  return [
+    ...staticEntries,
+    ...categoryEntries,
+    ...postEntries,
+    ...authorEntries,
   ];
 }

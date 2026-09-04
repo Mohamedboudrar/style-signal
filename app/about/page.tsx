@@ -1,5 +1,14 @@
+import type { Metadata } from "next";
+
 import { Container } from "@/components/Container";
 import { site } from "@/lib/site";
+import { buildPageMetadata } from "@/lib/metadata";
+
+export const metadata: Metadata = buildPageMetadata({
+  path: "/about",
+  title: "About",
+  description: `About ${site.name}: ${site.description}`,
+});
 
 export default function AboutPage() {
   return (

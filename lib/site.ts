@@ -1,19 +1,16 @@
 import type { CategoryInfo, CategorySlug } from "./types";
 
 // Single source of truth for site identity, nav, and category metadata.
-// Placeholders ([Domain], [Site URL]) are intentionally kept until the
-// production domain is finalized.
+// The `url` is the production canonical origin. Keep it bare (no trailing
+// slash) — every consumer concatenates `${site.url}/path`.
 
 export const site = {
   name: "Style Signal",
   tagline: "The trends worth knowing.",
   description:
     "US-focused fashion trend intelligence — runway trends, celebrity fashion, affordable interpretations, and seasonal trend reports.",
-  // TODO: replace with the production domain.
-  url: "https://[your-site].com",
-  // TODO: replace with the production social handles.
+  url: "https://stylesignal.dpdns.org",
   twitter: "@stylesignal",
-  // Editor contact — fill when the first author profile is added.
   editorEmail: "editor@stylesignal.com",
   language: "en-US",
 };

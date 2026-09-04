@@ -1,6 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
 import { Container } from "@/components/Container";
 import { getAllAuthors } from "@/lib/authors";
+import { site } from "@/lib/site";
+import { buildPageMetadata } from "@/lib/metadata";
+
+export const metadata: Metadata = buildPageMetadata({
+  path: "/authors",
+  title: "Authors",
+  description: `The writers and editors behind ${site.name}.`,
+});
 
 export default async function AuthorsIndex() {
   const authors = await getAllAuthors();

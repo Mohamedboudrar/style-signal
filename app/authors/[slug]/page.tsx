@@ -1,22 +1,25 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Container } from "@/components/Container";
 import { ArticleCard } from "@/components/ArticleCard";
 import { getAuthor } from "@/lib/authors";
+import { buildPageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
-}) {
+}): Promise<Metadata> {
   const { slug } = await params;
   const author = await getAuthor(slug);
   if (!author) return { title: "Author not found" };
-  return {
+  return buildPageMetadata({
+    path: `/authors/${author.slug}`,
     title: author.name,
     description: author.bio,
-  };
+  });
 }
 
 export default async function AuthorPage({
